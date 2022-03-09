@@ -1,8 +1,9 @@
 import './App.css';
 import React from 'react';
-import axios from 'axios';
+import { connect } from 'react-redux';
 
 import { Product } from './Components/Product'
+import { getProducts } from './store/products/action'
 
 /*
  React.PureComponent is better than Component in some cases due to it implements `shouldComponent()` by default (doing shallow comparison)
@@ -10,28 +11,16 @@ import { Product } from './Components/Product'
  won't be mutatd by state or props. All children need to be pure as well.
 */
 class App extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      products: []
-    }
-  }
 
   componentDidMount() {
-    axios
-      .get('https://fakestoreapi.com/products')
-      .then(res => {
-        const products = res.data;
-        this.setState({
-          products
-        })
-      })
+    this.props.getProducts();
   }
 
   render() {
+    const { products = [] } = this.props.state;
     return (
       <ul>
-        {this.state.products.map(product =>
+        {products.map(product =>
           <Product key={product.id} product={product} />
         )}
       </ul>
@@ -39,4 +28,16 @@ class App extends React.Component {
   }
 }
 
-export default App;
+const mapStateToProps = (state) => {
+  return {
+    state: state.productReducers
+  }
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    getProducts: () => dispatch(getProducts())
+  }
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);

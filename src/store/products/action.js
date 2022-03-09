@@ -1,7 +1,10 @@
 import {
   GET_PRODUCTS,
   GET_PRODUCTS_SUCCESS,
-  GET_PRODUCTS_FAIL
+  GET_PRODUCTS_FAIL,
+  GET_PRODUCT,
+  GET_PRODUCT_SUCCESS,
+  GET_PRODUCT_FAIL,
 } from './actionTypes';
 
 //define the actions
@@ -21,5 +24,24 @@ export const getProductsSuccess = (products) => {
 export const getProductsFail = () => {
   return {
     type: GET_PRODUCTS_FAIL,
+  };
+};
+
+export const getProduct = () => {
+  return {
+    type: GET_PRODUCT,
+  }
+};
+
+export const getProductSuccess = (product) => {
+  return {
+    type: GET_PRODUCT_SUCCESS,
+    product: product
+  };
+};
+
+export const getProductFail = () => {
+  return {
+    type: GET_PRODUCT_FAIL,
   };
 };

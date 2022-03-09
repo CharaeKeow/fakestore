@@ -1,6 +1,6 @@
 import React from 'react'
 
-export class Product extends React.Component {
+class Product extends React.Component {
   render() {
     const product = this.props.product;
     return (
@@ -12,7 +12,16 @@ export class Product extends React.Component {
         <div>
           {product.rating.rate} || {product.rating.count}
         </div>
+        <div style={{ 'display': 'flex' }}>
+          <div
+            style={{ border: '1px solid black', padding: 5, borderRadius: 5, marginTop: 5, cursor: 'pointer' }}
+            onClick={() => console.log("Add to cart")}>
+            Add to Cart
+          </div>
+        </div>
       </div >
     )
   }
 }
+
+export default Product;

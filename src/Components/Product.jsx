@@ -1,11 +1,15 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import { } from '../store/products/action';
+import { setCart } from '../store/carts/actions';
 
 class Product extends React.Component {
+  handleAddToCart(product) {
+    this.props.setCart(product);
+  }
+
   render() {
-    const { selectedProduct = [] } = this.props.state;
+    const selectedProduct = this.props.state;
     return (
       <div style={{ 'margin': '12px', 'border': '1px solid #eee', 'borderRadius': 5, 'padding': '15px' }}>
         <img src={selectedProduct.image} alt={selectedProduct.title} style={{ width: '200px', height: '200px' }} />
@@ -14,12 +18,12 @@ class Product extends React.Component {
         <div>{selectedProduct.category}</div>
         <div>RM {selectedProduct.price}</div>
         <div>
-          {selectedProduct.rating.rate} || {selectedProduct.rating.count}
+          Rating: {selectedProduct.rating.rate} || Reviews: {selectedProduct.rating.count}
         </div>
         <div style={{ 'display': 'flex' }}>
           <div
             style={{ border: '1px solid black', padding: 5, borderRadius: 5, marginTop: 5, cursor: 'pointer' }}
-            onClick={() => console.log("Add to cart")}>
+            onClick={() => this.handleAddToCart(selectedProduct)}>
             Add to Cart
           </div>
         </div>
@@ -30,13 +34,14 @@ class Product extends React.Component {
 
 const mapStateToProps = (state) => {
   return {
-    state: state.productReducers
+    state: state.productReducers.selectedProduct,
+    cart: state.cartReducers
   }
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
-
+    setCart: (product) => dispatch(setCart(product))
   }
 };
 

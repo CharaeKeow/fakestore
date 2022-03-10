@@ -8,18 +8,12 @@ class Cart extends React.Component {
     this.props.getCart();
   }
 
-  calcTotal(cart) {
-    let total = 0;
-    cart.map(item => total += item.price);
-    return total;
-  }
 
   render() {
     const { cart = [] } = this.props.state;
     return (
       <>
         <p>Cart: ({cart.length})</p>
-        <p>Total: RM {this.calcTotal(cart)}</p>
       </>
     )
   }

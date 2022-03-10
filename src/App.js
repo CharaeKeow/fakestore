@@ -7,7 +7,8 @@ import {
 } from 'react-router-dom';
 
 import ProductList from './Components/ProductList';
-import Product from './Components/Product'
+import Product from './Components/Product';
+import CartDetails from './Components/CartDetails';
 
 /*
  React.PureComponent is better than Component in some cases due to it implements `shouldComponent()` by default (doing shallow comparison)
@@ -22,6 +23,7 @@ export default class App extends React.Component {
         <Switch>
           <Route exact path="/" component={ProductList} />
           <Route exact path="/products/:productId" component={Product} />
+          <Route exact path="/checkout" component={CartDetails} />
         </Switch>
       </Router>
     )

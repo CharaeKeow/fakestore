@@ -1,10 +1,19 @@
-import React from 'react'
+import React from 'react';
+import { connect } from 'react-redux';
+
+import { getProduct } from '../store/products/action';
 
 class Product extends React.Component {
+  componentDidMount() {
+    this.props.getProduct();
+  }
+
   render() {
+    const { params } = this.props.match.params;
     const product = this.props.product;
     return (
       <div style={{ 'margin': '12px', 'border': '1px solid #eee', 'borderRadius': 5, 'padding': '15px' }}>
+        <p>{params}</p>
         <div>{product.title}</div>
         <div>{product.description}</div>
         <div>{product.category}</div>
@@ -24,4 +33,16 @@ class Product extends React.Component {
   }
 }
 
-export default Product;
+const mapStateToProps = (state) => {
+  return {
+    state: state.productReducers
+  }
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    getProduct: () => dispatch(getProduct()),
+  }
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Product);

@@ -3,7 +3,7 @@ import React from 'react';
 import {
   BrowserRouter as Router,
   Route,
-  Routes,
+  Switch,
 } from 'react-router-dom';
 
 import ProductList from './Components/ProductList';
@@ -19,13 +19,10 @@ export default class App extends React.Component {
   render() {
     return (
       <Router>
-        <Routes>
-          <Route exact path="/" element={<ProductList />} />
-          <Route exact path="/products/:productId" element={<Product />} />
-          <Route path="*" element={
-            <h1>404 this page doesn't exist</h1>
-          } />
-        </Routes>
+        <Switch>
+          <Route exact path="/" component={ProductList} />
+          <Route exact path="/products/:productId" component={Product} />
+        </Switch>
       </Router>
     )
   }

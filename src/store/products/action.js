@@ -27,9 +27,10 @@ export const getProductsFail = () => {
   };
 };
 
-export const getProduct = () => {
+export const getProduct = (product) => {
   return {
     type: GET_PRODUCT,
+    product: product,
   }
 };
 

@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
-import { getProducts, getProduct } from '../store/products/action'
+import { getProducts, } from '../store/products/action'
 
 class ProductList extends React.Component {
   componentDidMount() {
@@ -40,7 +40,6 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     getProducts: () => dispatch(getProducts()),
-    getProduct: () => dispatch(getProduct()),
   }
 };
 

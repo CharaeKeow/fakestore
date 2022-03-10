@@ -24,9 +24,9 @@ export function* watchFetchProducts() {
 }
 
 //fetch a single product -> for detail screen
-function* onFetchProduct() {
+function* onFetchProduct(productId) {
   try {
-    const response = yield call(fetchProduct);
+    const response = yield call(fetchProduct, productId);
     yield put(getProductSuccess(response));
   } catch (error) {
     yield put(getProductFail())

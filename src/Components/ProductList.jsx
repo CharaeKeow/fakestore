@@ -2,24 +2,32 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
-import { getProducts, } from '../store/products/action'
+import Cart from './Cart';
+import { getProducts, getProduct } from '../store/products/action';
 
 class ProductList extends React.Component {
   componentDidMount() {
     this.props.getProducts();
   }
 
+  handleSelectProduct(product) {
+    this.props.getProduct(product);
+  }
+
   render() {
     const { products = [] } = this.props.state;
+    console.log(products)
     return (
       <ul>
         <h1>Products</h1>
+        <Cart />
         <div style={{ display: 'flex', flexWrap: 'wrap' }}>
           {products.map(product =>
             <Link
               key={product.id}
               style={{ width: '400px', height: '400px', border: '1px solid #eee', margin: 5, padding: 5, borderRadius: 5, cursor: 'pointer', color: 'black', textDecoration: 'none' }}
-              to={`/products/${product.id}`}>
+              to={`/products/${product.id}`}
+              onClick={() => this.handleSelectProduct(product)}>
               <img src={product.image} alt={product.title} style={{ width: '200px', height: '200px' }} />
               <h3>{product.title}</h3>
               <p>RM {product.price}</p>
@@ -40,6 +48,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     getProducts: () => dispatch(getProducts()),
+    getProduct: (productId) => dispatch(getProduct(productId)),
   }
 };
 

@@ -25,7 +25,7 @@ const productsReducers = (state = initialState, action) => {
     case GET_PRODUCTS_SUCCESS:
       return {
         ...state,
-        products: action.products,
+        products: action.payload,
         loadingProducts: false
       };
     case GET_PRODUCTS_FAIL:
@@ -35,11 +35,14 @@ const productsReducers = (state = initialState, action) => {
         loadingProducts: false
       };
     case GET_PRODUCT:
-      return { ...state }
+      return {
+        ...state,
+        selectedProduct: action.payload,
+      }
     case GET_PRODUCT_SUCCESS:
       return {
         ...state,
-        selectedProduct: action.product,
+        selectedProduct: action.selectedProduct,
       }
     case GET_PRODUCT_FAIL:
       return {

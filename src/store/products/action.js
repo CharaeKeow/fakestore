@@ -17,7 +17,7 @@ export const getProducts = () => {
 export const getProductsSuccess = (products) => {
   return {
     type: GET_PRODUCTS_SUCCESS,
-    products: products
+    payload: products
   };
 };
 
@@ -27,17 +27,17 @@ export const getProductsFail = () => {
   };
 };
 
-export const getProduct = (product) => {
+export const getProduct = (selectedProduct) => {
   return {
     type: GET_PRODUCT,
-    product: product,
+    payload: selectedProduct,
   }
 };
 
-export const getProductSuccess = (product) => {
+export const getProductSuccess = (selectedProduct) => {
   return {
     type: GET_PRODUCT_SUCCESS,
-    product: product
+    payload: selectedProduct,
   };
 };
 

@@ -1,25 +1,20 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import { getProduct } from '../store/products/action';
+import { } from '../store/products/action';
 
 class Product extends React.Component {
-  componentDidMount() {
-    this.props.getProduct();
-  }
-
   render() {
-    const { params } = this.props.match.params;
-    const product = this.props.product;
+    const { selectedProduct = [] } = this.props.state;
     return (
       <div style={{ 'margin': '12px', 'border': '1px solid #eee', 'borderRadius': 5, 'padding': '15px' }}>
-        <p>{params}</p>
-        <div>{product.title}</div>
-        <div>{product.description}</div>
-        <div>{product.category}</div>
-        <div>RM {product.price}</div>
+        <img src={selectedProduct.image} alt={selectedProduct.title} style={{ width: '200px', height: '200px' }} />
+        <div>{selectedProduct.title}</div>
+        <div>{selectedProduct.description}</div>
+        <div>{selectedProduct.category}</div>
+        <div>RM {selectedProduct.price}</div>
         <div>
-          {product.rating.rate} || {product.rating.count}
+          {selectedProduct.rating.rate} || {selectedProduct.rating.count}
         </div>
         <div style={{ 'display': 'flex' }}>
           <div
@@ -41,7 +36,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    getProduct: () => dispatch(getProduct()),
+
   }
 };
 

@@ -12,9 +12,9 @@ class Cart extends React.Component {
   render() {
     const { cart = [] } = this.props.state;
     return (
-      <>
+      <div style={{ width: '100px', border: '1px solid #eee', borderRadius: 5, cursor: 'pointer', textAlign: 'center', }}>
         <p>Cart: ({cart.length})</p>
-      </>
+      </div>
     )
   }
 }

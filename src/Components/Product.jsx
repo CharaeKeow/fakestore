@@ -12,14 +12,14 @@ class Product extends React.Component {
     const selectedProduct = this.props.state;
     return (
       <div style={{ 'margin': '12px', 'border': '1px solid #eee', 'borderRadius': 5, 'padding': '15px' }}>
+        <h1>{selectedProduct.title}</h1>
         <img src={selectedProduct.image} alt={selectedProduct.title} style={{ width: '200px', height: '200px' }} />
-        <div>{selectedProduct.title}</div>
-        <div>{selectedProduct.description}</div>
-        <div>{selectedProduct.category}</div>
-        <div>RM {selectedProduct.price}</div>
-        <div>
+        <p>{selectedProduct.description}</p>
+        <p>{selectedProduct.category}</p>
+        <p>RM {selectedProduct.price}</p>
+        <p>
           Rating: {selectedProduct.rating.rate} || Reviews: {selectedProduct.rating.count}
-        </div>
+        </p>
         <div style={{ 'display': 'flex' }}>
           <div
             style={{ border: '1px solid black', padding: 5, borderRadius: 5, marginTop: 5, cursor: 'pointer' }}

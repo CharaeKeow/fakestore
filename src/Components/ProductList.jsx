@@ -21,7 +21,7 @@ class ProductList extends React.Component {
       <ul>
         <h1>Products</h1>
         <Link
-          style={{ width: '400px', height: '400px', border: '1px solid #eee', margin: 5, padding: 5, borderRadius: 5, cursor: 'pointer', color: 'black', textDecoration: 'none' }}
+          style={{ color: 'black', textDecoration: 'none' }}
           to={`/checkout`}
         >
           <Cart />

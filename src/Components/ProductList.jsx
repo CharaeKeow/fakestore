@@ -20,7 +20,12 @@ class ProductList extends React.Component {
     return (
       <ul>
         <h1>Products</h1>
-        <Cart />
+        <Link
+          style={{ color: 'black', textDecoration: 'none' }}
+          to={`/checkout`}
+        >
+          <Cart />
+        </Link>
         <div style={{ display: 'flex', flexWrap: 'wrap' }}>
           {products.map(product =>
             <Link
